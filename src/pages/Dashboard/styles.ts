@@ -4,6 +4,11 @@ interface CardProps {
   total?: boolean;
 }
 
+/*export const Importar = styled.a`
+  background-color:
+
+`;*/
+
 export const Container = styled.div`
   width: 100%;
   max-width: 1120px;
