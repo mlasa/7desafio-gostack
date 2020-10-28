@@ -24,16 +24,13 @@ const Import: React.FC = () => {
 
   async function handleUpload(): Promise<void> {
     const data = new FormData();
-    if (!!uploadedFiles.length) {
-      data.append('file', uploadedFiles[0].file);
-      console.log("formdata", data);
-    }
+    data.append('file', uploadedFiles[0].file);
 
     try {
-      // await api.post('/transactions/import', data);
-      console.log('tentando');
+      api.post('/transactions/import', data);
+      history.goBack();
     } catch (err) {
-      // console.log(err.response.error);
+      console.log(err.response.error);
     }
   }
 
@@ -57,7 +54,6 @@ const Import: React.FC = () => {
         <ImportFileContainer>
           <Upload onUpload={submitFile} />
           {!!uploadedFiles.length && <FileList files={uploadedFiles} />}
-
           <Footer>
             <p>
               <img src={alert} alt="Alert" />
